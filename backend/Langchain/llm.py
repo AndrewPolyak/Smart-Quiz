@@ -72,4 +72,12 @@ if __name__=="__main__":
         data = file.read().replace('\n', '')
     content = data
 
+<<<<<<< Updated upstream
 quiz = llm.generate_questions(content=content)
+=======
+    content = """
+    HTML (HyperText Markup Language) is the standard language used to create and structure content on the web. It provides the basic building blocks for designing web pages by defining the structure of the content, such as headings, paragraphs, links, images, and multimedia elements. HTML uses a system of tags, which are enclosed in angle brackets (e.g., <h1>, <p>, <a>), to specify how different parts of a webpage should be displayed. It works in combination with CSS (Cascading Style Sheets) to control the appearance and JavaScript for interactive behavior. As the backbone of web development, HTML ensures that webpages are readable and accessible across all browsers and devices.
+    """
+
+    print(llm.generate_questions(content=content))
+>>>>>>> Stashed changes
