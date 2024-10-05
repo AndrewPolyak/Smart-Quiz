@@ -1,0 +1,45 @@
+body, a {
+    background-color: #55505C;
+    font-family: Sans-serif;
+    color: #7FC6A4;
+
+}
+
+header h1 {
+    font-size: 400%;
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3%;
+    margin-bottom: -3%;
+}
+
+nav a {
+    font-size: 150%;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+nav a:hover {
+    background-color: #5D737E;
+    border: #5D737E;
+    border-radius: 5px;
+    color: #FAF33E;
+}
+
+#bio {
+    margin-top: -5%;
+    border: black solid;
+    border-radius: 10px;
+}
+
+#bio h2, #bio p {
+    display: flex;
+    justify-content: center
+}
+
