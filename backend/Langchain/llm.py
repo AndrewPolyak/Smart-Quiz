@@ -32,7 +32,7 @@ class LLM:
                 (
                     "system",
                     "You are an expert quiz compiler. You will ingest a massive amount of text representing a student's lecture. You will critically examine all of the text and then generate a multiple choice quiz that will assess the user's knowledge of the provided subject matter."
-                    "Generate 10 questions for the user and provide 4 multiple choice questions, with only one of the answers being correct."
+                    "Generate 10 questions for the user and provide 4 multiple choice answers, with only one of the answers being correct."
                     "Format the response as follows: create a JSON that contains questions, and for each question 4 answers, and for each answer a true or false value for whether it is correct or not. Generate this JSON only with no other text response attached to your output. I am only intereted in your JSON output."
                     "The information in the questions - and the answer - should exclusively be based on "
                     '''
@@ -68,9 +68,8 @@ class LLM:
 
 if __name__=="__main__":
     llm = LLM(api_key=API_KEY, model=model)
+    with open('backend/Langchain/uploaded_file/notes.txt', 'r') as file:
+        data = file.read().replace('\n', '')
+    content = data
 
-    content = """
-HTML (HyperText Markup Language) is the standard language used to create and structure content on the web. It provides the basic building blocks for designing web pages by defining the structure of the content, such as headings, paragraphs, links, images, and multimedia elements. HTML uses a system of tags, which are enclosed in angle brackets (e.g., <h1>, <p>, <a>), to specify how different parts of a webpage should be displayed. It works in combination with CSS (Cascading Style Sheets) to control the appearance and JavaScript for interactive behavior. As the backbone of web development, HTML ensures that webpages are readable and accessible across all browsers and devices.
-"""
-
-    print(llm.generate_questions(content=content))
+quiz = llm.generate_questions(content=content)
