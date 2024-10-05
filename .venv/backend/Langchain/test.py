@@ -20,20 +20,20 @@ docs = text_splitter.split_documents(documents)
 # Initialize the Groq language model (make sure to set your API key and endpoint if required)
 llm = Groq(api_key=os.getenv('GROQ_API_KEY'), model='THE KEY')
 
-# # Create a function to generate quiz questions
-# def generate_quiz_questions(docs):
-#     questions = []
-#     for doc in docs:
-#         # Prepare the prompt for the Groq model
-#         prompt = f"Based on the following text, generate 3 quiz questions with answers:\n\n{doc.page_content}"
-#         chain = LLMChain(llm=llm, prompt=prompt)
-#         response = chain.run()
-#         questions.append(response)
-#     return questions
+# Create a function to generate quiz questions
+def generate_quiz_questions(docs):
+    questions = []
+    for doc in docs:
+        # Prepare the prompt for the Groq model
+        prompt = f"Based on the following text, generate 3 quiz questions with answers:\n\n{doc.page_content}"
+        chain = LLMChain(llm=llm, prompt=prompt)
+        response = chain.run()
+        questions.append(response)
+    return questions
 
-# # Generate quiz questions
-# quiz_questions = generate_quiz_questions(docs)
+# Generate quiz questions
+quiz_questions = generate_quiz_questions(docs)
 
-# # Print out the quiz questions
-# for idx, questions in enumerate(quiz_questions):
-#     print(f"Questions from document chunk {idx + 1}:\n{questions}\n")
+# Print out the quiz questions
+for idx, questions in enumerate(quiz_questions):
+    print(f"Questions from document chunk {idx + 1}:\n{questions}\n")
