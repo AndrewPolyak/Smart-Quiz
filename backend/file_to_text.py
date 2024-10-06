@@ -13,6 +13,9 @@ class InputParser:
 
     
     def parse_ppt(self, powerpoint_path):
+        '''
+        Defines a method called "parse_ppt".
+        '''
         ppt = Presentation(powerpoint_path) 
 
         text = ""
@@ -41,6 +44,9 @@ class InputParser:
     
 
     def parse_pdf(self, pdf_path):
+        '''
+        Defines a method called "parse__pdf".
+        '''
         reader = PdfReader(pdf_path)
 
         text = ""
