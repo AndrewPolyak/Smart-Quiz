@@ -3,10 +3,13 @@ class user:
         self.username = username
         self.password = password
         self.xp = xp
-
+temp = user('amogus', 'sussy', "0")
+balls = temp.username + ' | ' + temp.password + ' | ' + temp.xp
 def add_user(username, password):
-    temp = user(username, password, 0)
+    temp = user(username, password, "0")
     with open("userdata.txt", "w") as f:
-        f.write(temp)
-def login(username, password):
+        f.write(string)
+def login(username, password): #CHECK IF USERNAME/PASSWORD IS IN USERDATA.TXT, if it is return true/sign in
     #TODO
+
+print()
