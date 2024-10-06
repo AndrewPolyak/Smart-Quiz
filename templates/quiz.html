@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Smart Quiz - Quiz</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/login_page.css') }}"> <!-- Corrected path to the quiz page CSS -->
+    </head>
+    <body>
+        <header>
+            <!-- Logo on the top left (same as main page) -->
+            <img src="../images/Gray and Black Simple Studio Logo.png" alt="Quiz Time Logo" id="logo">
+            <nav>
+                <a href="{{url_for('index')}}" id="homepage">Home</a>
+            </nav>
+        </header>
+
+        <main id="quiz-section">
+            <h2>Welcome to Your Quiz</h2>
+            <form method="post" action="submit_quiz.html" enctype="multipart/form-data"> <!-- Added enctype for file upload -->
+                
+                <!-- File Upload Section -->
+                <div class="file-upload">
+                    <h3>Upload Your File:</h3>
+                    <input type="file" name="uploaded_file" id="file-upload" required>
+                </div>
+
+                <!-- Quiz Questions -->
+                <div class="question">
+                    <h3>Question 1: What is the capital of France?</h3>
+                    <label>
+                        <input type="radio" name="q1" value="Paris" required> Paris
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="London"> London
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="Berlin"> Berlin
+                    </label><br>
+                    <label>
+                        <input type="radio" name="q1" value="Madrid"> Madrid
+                    </label>
+                </div>
+                
+                <br>
+                <div id="quiz-buttons">
+                    <button type="submit">Submit Quiz</button>
+                </div>
+            </form>
+        </main>
+
+        <footer>
+            <nav>
+                <a id="link-github" href="https://github.com/AndrewPolyak/Smart-Quiz" target="_blank">
+                    &#x200b;<img src="../images/GitHub_Logo.png" title="GitHub Logo" alt="GitHub Logo" width="50%">
+                </a>
+            </nav>
+        </footer>
+    </body>
+</html>
