@@ -7,5 +7,13 @@
 5. AI processes the content, Creates question and answer pairs, stores them in .json file
 6. Quiz UI populated with JSON file.
 7. Post quizzes to "groups" for people. Poster can "edit" the quiz.
+<<<<<<< Updated upstream
 8. Keep track of who has the highest score in the group.
 9. XP/levelling system based on assignment to assignment scores.
+=======
+8. Keep track of who has the highest score in the class.
+9. XP/levelling system based on assignment to assignment scores.
+
+Notes:
+1. Parse 
+>>>>>>> Stashed changes
