@@ -61,5 +61,18 @@ class LLM:
         # Recieve an output from the LLM
         output = chain.invoke({"text": content}, )
         return output
-    
 
+question = []
+answers = []
+answerkey = []
+for i, j in enumerate(quiz):
+    question.append(j['question']) # i + 1 is the question number
+    # print('Question', i+1, '\b:', j['question'], '\n')
+    for k, l in enumerate(j['answers']): # Analyses the answers
+        answers.append(l)
+        if l['is_correct'] == 1:
+            answerkey.append(k)
+            # correct = l['answer']
+    #     print(k + 1, l['answer'])
+    # print('\n')
+    # print('The correct answer is:', correct)
