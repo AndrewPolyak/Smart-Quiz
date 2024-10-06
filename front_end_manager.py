@@ -88,6 +88,7 @@ def file_upload_handler():
             answerstr.append(l)
 
     instance.correct_answers = answerstr
+    instance.quiz = question_answer_pairs
 
     # Pass the paired questions and answers to the template
     return render_template("quiz.html", question_answer_pairs=question_answer_pairs, username=instance.username, xp=instance.xp)
@@ -96,7 +97,7 @@ def file_upload_handler():
 @app.route('/handle_quiz_submission', methods=["POST"])
 def handle_quiz_submission():
 
-    return render_template("quiz.html", answer=instance.correct_answers)
+    return render_template("quiz.html", question_answer_pairs=instance.quiz, answer=instance.correct_answers)
 
 
 if __name__=="__main__":
