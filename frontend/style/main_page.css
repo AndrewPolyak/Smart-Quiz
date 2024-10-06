@@ -1,0 +1,37 @@
+body, a {
+    background-color: #fffffa;
+    font-family: Sans-serif;
+    color: #0D5C63;
+}
+
+header h1 {
+    font-size: 400%;
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+nav a {
+    font-size: 150%;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+nav a:hover {
+    background-color: #5D737E;
+    border: #5D737E;
+    border-radius: 5px;
+    color: #FAF33E;
+}
+
+#bio h2, #bio p {
+    display: flex;
+    justify-content: center
+}
+
