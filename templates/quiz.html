@@ -8,8 +8,6 @@
     </head>
     <body>
         <header>
-            <!-- Logo on the top left (same as main page) -->
-            <img src="../images/Gray and Black Simple Studio Logo.png" alt="Quiz Time Logo" id="logo">
             <nav>
                 <a href="{{url_for('index')}}" id="homepage">Home</a>
             </nav>
@@ -37,8 +35,8 @@
                     {% for answer in answers %}
                     <div class="answer">
                         <!-- Ensure that the 'name' attribute is unique for each question, but the same for all options within that question -->
-                        <input type="checkbox" name="question_{{ loop.index }}" value="{{ answer }}" onclick="handleCheckbox(this, 'question_{{ loop.index }}')">
                         <label>{{ answer }}</label>
+                        <input id= "ans_btn" type="checkbox" name="question_{{ loop.index }}" value="{{ answer }}" onclick="handleCheckbox(this, 'question_{{ loop.index }}')">
                     </div>
                     {% endfor %}
                 </div>

@@ -74,6 +74,10 @@ nav a:hover {
     margin-top: 20px;
 }
 
+#ans_btn  {
+    size: 50%;
+}
+
 #quiz-buttons button {
     padding: 10px 20px;
     background-color: #55505C;
