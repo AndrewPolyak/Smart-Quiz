@@ -96,8 +96,30 @@ def file_upload_handler():
 
 @app.route('/handle_quiz_submission', methods=["POST"])
 def handle_quiz_submission():
+    user_answers = []
 
-    return render_template("quiz.html", question_answer_pairs=instance.quiz, answer=instance.correct_answers)
+    # Collecting user answers from checkboxes
+    for i in range(len(instance.quiz)):
+        user_answers.append(request.form.getlist(f'question_{i + 1}'))  # Adjust based on your input names
+
+    # Assuming you have a way to retrieve the correct answers
+    correct_answers = instance.correct_answers
+
+    # Initialize the score
+    score = 0
+
+    # Calculate the score
+    for i, user_answer in enumerate(user_answers):
+        if user_answer:  # Ensure the user provided an answer
+            # Check if the user's answer matches the correct answer
+            if set(user_answer) == set(correct_answers[i]):
+                score += 1  # Increment score for each correct answer
+
+    # Update the user's score in the instance
+    instance.xp += score
+
+    # Render the quiz page with results
+    return render_template("quiz.html", question_answer_pairs=instance.quiz, answer=instance.correct_answers, xp=instance.xp)
 
 
 if __name__=="__main__":
