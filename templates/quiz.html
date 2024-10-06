@@ -21,7 +21,7 @@
             <h2 class="score">Score {{xp}}</h2>
                 
             <!-- File Upload Section -->
-            <form action="{{ url_for('file_upload_handler') }}" method="post" enctype="multipart/form-data" action="/handle_quiz_submission">
+            <form action="{{ url_for('file_upload_handler') }}" method="post" enctype="multipart/form-data">
                 <div class="file-upload">
                     <h3>Upload Your File:</h3>
                     <input type="file" name="uploaded_file" id="file-upload" required>
@@ -29,16 +29,16 @@
                     <button type="submit">Generate Quiz</button>
                 </div>
             </form>
-            <!-- Loop through questions and answers -->
-            <form method="post" action="submit_quiz.html">
+
+            <!-- Quiz Section -->
+            <form method="post" action="{{ url_for('handle_quiz_submission') }}">
                 {% for question, answers in question_answer_pairs %}
                 <div class="question">
-                    <h3>{{ loop.index }}. {{ question }}</h3> <!-- Display the question -->
-
-                    <!-- Display each answer as a radio button -->
+                    <h3>{{ loop.index }}. {{ question }}</h3>
                     {% for answer in answers %}
                     <div class="answer">
-                        <input type="radio" name="question_{{ loop.index }}" value="{{ answer }}" required>
+                        <!-- Ensure that the 'name' attribute is unique for each question, but the same for all options within that question -->
+                        <input type="checkbox" name="question_{{ loop.index }}" value="{{ answer }}" onclick="handleCheckbox(this, 'question_{{ loop.index }}')">
                         <label>{{ answer }}</label>
                     </div>
                     {% endfor %}
@@ -47,8 +47,10 @@
                 <br>
                 <button type="submit">Submit Quiz</button>
             </form>
+
+            <p>{{ answer }}</p>      
         </main>
-        <br><br>
+
         <footer>
             <nav>
                 <a id="link-github" href="https://github.com/AndrewPolyak/Smart-Quiz" target="_blank">
