@@ -1,0 +1,138 @@
+/* General body styling with background image */
+body {
+    background-image: url('../images/pexels-cottonbro-9694697.png'); /* Adjust the image path accordingly */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensures the body takes up full viewport height */
+}
+
+/* Header and Logo */
+#logo {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid #7FC6A4;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    object-fit: cover;
+}
+
+header h1 {
+    font-size: 400%;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    color: #7FC6A4;
+}
+
+/* Navigation bar styling */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+nav a {
+    font-size: 150%;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #55505C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav a:hover {
+    background-color: #5D737E;
+    color: #FAF33E;
+}
+
+/* Quiz section styling */
+#quiz-section {
+    margin-top: 60px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Question styling */
+.question h3 {
+    margin-bottom: 10px;
+}
+
+#quiz-buttons {
+    margin-top: 20px;
+}
+
+#quiz-buttons button {
+    padding: 10px 20px;
+    background-color: #55505C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#quiz-buttons button:hover {
+    background-color: #5D737E;
+    color: #FAF33E;
+}
+
+/* Footer styling */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    background-color: #55505C;
+    padding: 20px;
+    color: white;
+}
+
+footer a {
+    color: #FAF33E;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer img {
+    width: 50px;
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #logo {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    form, #quiz-section {
+        width: 90%;
+    }
+
+    #quiz-buttons {
+        flex-direction: column;
+    }
+
+    #quiz-buttons button {
+        width: 100%;
+    }
+}
+
