@@ -50,7 +50,5 @@ def file_upload_handler():
     questions = processor.generate_questions(file_contents)
 
 
-    
-
 if __name__=="__main__":
     app.run(debug=True)
