@@ -17,11 +17,13 @@ users = [] #
 amogus = user("amongus77", "sussybaka", "0")
 users.append(amogus)
 
-print(f"{os.getcwd()}{os.sep}userdata.txt")
+
 with open("userdata.txt", "w") as f:
+    f.write("joner boner")
     f.write(amogus.username)
     f.write(amogus.password)
     f.write(amogus.xp)
+
     
 
 print('check')
