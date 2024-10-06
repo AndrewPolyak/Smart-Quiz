@@ -83,11 +83,13 @@ def file_upload_handler():
     
     answerstr = []
     # gets the answer in a string
-    for i, j in enumerate(questions):
-        for k, l in enumerate(j['answers']):
-            answerstr.append(l)
+    for j in questions:
+        for l in j['answers']:
+            if l['is_correct'] == 1:
+                answerstr.append(l['answer'])
 
-    instance.correct_answers = answerstr
+
+    instance.correct_answers = "Answers: " + str(answerstr)
     instance.quiz = question_answer_pairs
 
     # Pass the paired questions and answers to the template
