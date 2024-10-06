@@ -2,6 +2,7 @@ from pptx import Presentation
 import docx
 from PyPDF2 import PdfReader
 import os
+from tempfile import NamedTemporaryFile
 
 class InputParser:
     def __init__(self):
@@ -54,21 +55,24 @@ class InputParser:
 
 
 def process_file(file):
-        text = ""
-        
-        file_name, extension = os.path.splitext(file)
-        extension = extension[1:]
+    text = ""
+    file_name, extension = os.path.splitext(file.filename)
+    extension = extension[1:].lower()  # Remove leading dot and make lowercase
 
-        parser = InputParser()
+    parser = InputParser()
 
-        if (extension == "pdf"):
-            text = parser.parse_pdf(file)
-        
-        elif (extension == "docx"):
-            text = parser.parse_word(file)
+    with NamedTemporaryFile(delete=False, suffix=extension) as temp_file:
+        file.save(temp_file.name)
+        temp_file_path = temp_file.name
 
-        elif (extension == "pptx"):
-            text = parser.parse_ppt(file)
+    if extension == "pdf":
+        text = parser.parse_pdf(temp_file_path)
+    elif extension == "docx":
+        text = parser.parse_word(temp_file_path)
+    elif extension == "pptx":
+        text = parser.parse_ppt(temp_file_path)
 
-        return text
+    os.remove(temp_file_path)
+
+    return text
         

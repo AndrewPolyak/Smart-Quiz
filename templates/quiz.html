@@ -14,45 +14,41 @@
                 <a href="{{url_for('index')}}" id="homepage">Home</a>
             </nav>
         </header>
-
         <main id="quiz-section">
-            <h2>Welcome to Your Quiz</h2>
-            <form method="post" action="submit_quiz.html" enctype="multipart/form-data"> <!-- Added enctype for file upload -->
-                
-                <!-- File Upload Section -->
-                <form action="/upload_file" method="post" enctype="multipart/form-data">
-                    <div class="file-upload">
-                        <h3>Upload Your File:</h3>
-                        <input type="file" name="uploaded_file" id="file-upload" required>
-                        <br>
-                        <button type="submit">Generate Quiz</button>
-                    </div>
-                </form>
+            <h2>Quiz Yourself</h2>
 
-                <!-- Quiz Questions -->
-                <div class="question">
-                    <h3>Question 1: What is the capital of France?</h3>
-                    <label>
-                        <input type="radio" name="q1" value="Paris" required> Paris
-                    </label><br>
-                    <label>
-                        <input type="radio" name="q1" value="London"> London
-                    </label><br>
-                    <label>
-                        <input type="radio" name="q1" value="Berlin"> Berlin
-                    </label><br>
-                    <label>
-                        <input type="radio" name="q1" value="Madrid"> Madrid
-                    </label>
-                </div>
+            <h2 class="welcome-message">Welcome back, {{username}}</h2>
+            <h2 class="score">Score {{xp}}</h2>
                 
-                <br>
-                <div id="quiz-buttons">
-                    <button type="submit">Submit Quiz</button>
+            <!-- File Upload Section -->
+            <form action="{{ url_for('file_upload_handler') }}" method="post" enctype="multipart/form-data" action="/handle_quiz_submission">
+                <div class="file-upload">
+                    <h3>Upload Your File:</h3>
+                    <input type="file" name="uploaded_file" id="file-upload" required>
+                    <br>
+                    <button type="submit">Generate Quiz</button>
                 </div>
             </form>
-        </main>
+            <!-- Loop through questions and answers -->
+            <form method="post" action="submit_quiz.html">
+                {% for question, answers in question_answer_pairs %}
+                <div class="question">
+                    <h3>{{ loop.index }}. {{ question }}</h3> <!-- Display the question -->
 
+                    <!-- Display each answer as a radio button -->
+                    {% for answer in answers %}
+                    <div class="answer">
+                        <input type="radio" name="question_{{ loop.index }}" value="{{ answer }}" required>
+                        <label>{{ answer }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                <br>
+                <button type="submit">Submit Quiz</button>
+            </form>
+        </main>
+        <br><br>
         <footer>
             <nav>
                 <a id="link-github" href="https://github.com/AndrewPolyak/Smart-Quiz" target="_blank">
