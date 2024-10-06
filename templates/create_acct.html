@@ -4,13 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Smart Quiz - Sign Up</title>
-        <link rel="stylesheet" href="../style/login_page.css">
+        <link rel="stylesheet" href="../static/style/login_page.css">
     </head>
     <body>
         <br>
         <nav>
-            <a href="../index.html" id="homepage">Home</a>
-            <a href="login.html" id="homepage-create-acct">Login</a>
+            <a href="{{url_for('index')}}" id="homepage">Home</a>
+            <a href="{{url_for('login')}}" id="homepage-create-acct">Login</a>
         </nav>
         <header>
             <h1 id="homepage-title">Smart Quiz</h1>
@@ -18,7 +18,7 @@
         <br>
         <main id="login-form">
             <h2>REGISTER</h2>
-            <form method="post" action="">
+            <form method="post" action="/handle_acct_create">
                 <label class="username">
                     Username <span>(required)</span>
                     <br/><br>
