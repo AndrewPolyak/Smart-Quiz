@@ -6,7 +6,7 @@ class User:
 
 def add_user(username, password):
     temp = User(username, password, "0")
-    with open("userdata.txt", "w") as f:
+    with open("userdata.txt", "a") as f:
         f.write(f"{temp.username},{temp.password},{temp.xp}\n")
 
     return True
