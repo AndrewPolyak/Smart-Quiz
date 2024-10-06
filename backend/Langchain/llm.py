@@ -4,9 +4,6 @@ from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.pydantic_v1 import BaseModel, Field
 from typing import Optional
 
-API_KEY = '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'
-model = 'llama3-70b-8192'
-
 class MultipleChoiceQuestion(BaseModel):
     question1: Optional[str] = Field(default=None, description="a question based on the context of the input and 4 answers")
     question2: Optional[str] = Field(default=None, description="a question based on the context of the input and 4 answers")
@@ -21,10 +18,10 @@ class MultipleChoiceQuestion(BaseModel):
 
 
 class LLM:
-    def __init__ (self, api_key, model):
-        self.api_key = api_key
-        self.model = model
-        self.llm = ChatGroq(api_key=api_key, model=model)
+    def __init__ (self):
+        self.api_key = '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'
+        self.model = 'llama3-70b-8192'
+        self.llm = ChatGroq(api_key=self.api_key, model=self.model)
 
     def generate_questions(self, content):
         prompt = ChatPromptTemplate.from_messages(
@@ -66,18 +63,3 @@ class LLM:
         return output
     
 
-if __name__=="__main__":
-    llm = LLM(api_key=API_KEY, model=model)
-    with open('backend/Langchain/uploaded_file/notes.txt', 'r') as file:
-        data = file.read().replace('\n', '')
-    content = data
-
-<<<<<<< Updated upstream
-quiz = llm.generate_questions(content=content)
-=======
-    content = """
-    HTML (HyperText Markup Language) is the standard language used to create and structure content on the web. It provides the basic building blocks for designing web pages by defining the structure of the content, such as headings, paragraphs, links, images, and multimedia elements. HTML uses a system of tags, which are enclosed in angle brackets (e.g., <h1>, <p>, <a>), to specify how different parts of a webpage should be displayed. It works in combination with CSS (Cascading Style Sheets) to control the appearance and JavaScript for interactive behavior. As the backbone of web development, HTML ensures that webpages are readable and accessible across all browsers and devices.
-    """
-
-    print(llm.generate_questions(content=content))
->>>>>>> Stashed changes

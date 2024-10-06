@@ -45,6 +45,20 @@ else:
     print("Login failed.")
 
 
+<<<<<<< Updated upstream
     #TODO
+=======
+def login_to_acct(username, password): #CHECK IF USERNAME/PASSWORD IS IN USERDATA.TXT, if it is return true/sign in
+    with open('userdata.txt', 'r') as file:
+        # Read each line in the file
+        for line in file:
+            user_details = line.split(",")
+
+            if username == user_details[0]:
+                if password == user_details[1]:
+                    return True
+                
+        return False
+>>>>>>> Stashed changes
 
 print()

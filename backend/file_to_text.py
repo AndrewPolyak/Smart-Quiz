@@ -8,10 +8,6 @@ class InputParser:
         None
 
     
-    def process_file(self, file):
-        None
-
-    
     def parse_ppt(self, powerpoint_path):
         '''
         Defines a method called "parse_ppt".
@@ -57,9 +53,22 @@ class InputParser:
         return text
 
 
-if __name__ == "__main__":
-    file = r"C:\Users\andre\OneDrive\Documents\Programming Projects\MruHacksSmartQuiz\Smart-Quiz\Academic Transcript 2024.pdf"
+def process_file(file):
+        text = ""
+        
+        file_name, extension = os.path.splitext(file)
+        extension = extension[1:]
 
-    input_parser = InputParser()
-    
-    print(input_parser.parse_pdf(file))
+        parser = InputParser()
+
+        if (extension == "pdf"):
+            text = parser.parse_pdf(file)
+        
+        elif (extension == "docx"):
+            text = parser.parse_word(file)
+
+        elif (extension == "pptx"):
+            text = parser.parse_ppt(file)
+
+        return text
+        
